@@ -1,9 +1,9 @@
 //   ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/widgets/header_mobile.dart';
 //  Import FILES
 import '../constants/colors.dart';
-import '../widgets/header_desktop.dart';
 //  //   ///
 
 class HomePage extends StatelessWidget {
@@ -18,8 +18,11 @@ class HomePage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         children: <Widget>[
           //  MAIN
-          const HeaderDesktop(),
-
+          // const HeaderDesktop(),
+          HeaderMobile(
+            onLogoTap: () {},
+            onMenuTap: () {},
+          ),
           //  SKILLS
           Container(
             height: 500.0,
