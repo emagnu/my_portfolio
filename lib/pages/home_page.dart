@@ -1,19 +1,29 @@
 //   ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/widgets/header_mobile.dart';
 //  Import FILES
 import '../constants/colors.dart';
+import '../widgets/drawer_mobile.dart';
+import '../widgets/header_mobile.dart';
 //  //   ///
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: CustomColor.scaffoldBg,
       // appBar: AppBar(title: const Text('Home Page')),
+      endDrawer: const DrawerMobile(),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
@@ -21,7 +31,9 @@ class HomePage extends StatelessWidget {
           // const HeaderDesktop(),
           HeaderMobile(
             onLogoTap: () {},
-            onMenuTap: () {},
+            onMenuTap: () {
+              scaffoldKey.currentState?.openEndDrawer();
+            },
           ),
           //  SKILLS
           Container(
