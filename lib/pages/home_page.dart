@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 //  Import FILES
 import '../constants/colors.dart';
+import '../widgets/header_desktop.dart';
 //  //   ///
 
 class HomePage extends StatelessWidget {
@@ -17,34 +18,7 @@ class HomePage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         children: <Widget>[
           //  MAIN
-          Container(
-            height: 60.0,
-            margin:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    CustomColor.bgLight1,
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(100.0)),
-            child: Row(
-              children: <Widget>[
-                const Text('DataCoder'),
-                const Spacer(),
-                for (int i = 0; i < 5; i++)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text('button'),
-                    ),
-                  ),
-              ],
-            ),
-          ),
+          const HeaderDesktop(),
 
           //  SKILLS
           Container(
