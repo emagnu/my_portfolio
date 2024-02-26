@@ -1,16 +1,16 @@
 //   ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/constants/skill_items.dart';
-import 'package:my_portfolio/widgets/home_page.dart';
-import 'package:my_portfolio/widgets/main_desktop.dart';
-import 'package:my_portfolio/widgets/skill_desktop.dart';
 //  Import FILES
 import '../constants/colors.dart';
 import '../constants/size.dart';
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
+import '../widgets/home_page.dart';
+import '../widgets/main_desktop.dart';
+import '../widgets/skill_desktop.dart';
+import '../widgets/skills_mobile.dart';
 //  //   ///
 
 class HomePage extends StatefulWidget {
@@ -59,27 +59,32 @@ class _HomePageState extends State<HomePage> {
               const MainMobile(),
             //  *** SKILLS   ***
             Container(
-                height: 500.0,
-                width: screenWidth, //.infinity,
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-                color: CustomColor.bgLight1, // Colors.blueGrey,
-                child: const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    // title
-                    Text(
-                      'What we can do for your business:',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: CustomColor.whitePrimary,
-                      ),
+              height: 700.0,
+              width: screenWidth, //.infinity,
+              padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+              color: CustomColor.bgLight1, // Colors.blueGrey,
+              //
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  // title
+                  const Text(
+                    'What we can do for your business:',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      color: CustomColor.whitePrimary,
                     ),
-                    SizedBox(height: 50.0),
-                    // Platforms & skills
-                    SkillDesktop()
-                  ],
-                )),
+                  ),
+                  const SizedBox(height: 50.0),
+                  // Platforms & skills
+                  if (constraints.maxWidth >= kMedDesktopWidth)
+                    const SkillDesktop()
+                  else
+                    const SkillsMobile()
+                ],
+              ),
+            ),
 
             // PROJECTS
             Container(
