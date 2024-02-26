@@ -24,6 +24,7 @@ class MainDesktop extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Intro Text
               const Text(
                 'Empowering Businesses\nwith Innovative and Tailored\nSoftware Solutions',
                 style: TextStyle(
@@ -45,6 +46,7 @@ class MainDesktop extends StatelessWidget {
               )
             ],
           ),
+          //  Avatar Image
           Image.asset(
             'assets/images/Dashatars.png',
             // 'assets/images/Dash1.png',

@@ -1,6 +1,9 @@
 //   ///
 //  Import LIBRARIES
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:my_portfolio/widgets/home_page.dart';
 import 'package:my_portfolio/widgets/main_desktop.dart';
 //  Import FILES
 import '../constants/colors.dart';
@@ -24,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
 
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
@@ -37,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           scrollDirection: Axis.vertical,
           children: <Widget>[
             //  *** MAIN  ***
-            //  HEADER + NAVBAR
+            //  HEADER + NAVBAR DESKTOP/MOBILE
             if (constraints.maxWidth >= kMinDesktopWidth)
               const HeaderDesktop()
             else
@@ -49,7 +53,10 @@ class _HomePageState extends State<HomePage> {
               ),
 
             //  MAIN DESKTOP/MOBILE
-            const MainDesktop(),
+            if (constraints.maxWidth >= kMinDesktopWidth)
+              const MainDesktop()
+            else
+              const MainMobile(),
             //  SKILLS
             Container(
               height: 500.0,
