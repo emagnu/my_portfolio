@@ -1,7 +1,7 @@
 //   ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:my_portfolio/widgets/main_desktop.dart';
 //  Import FILES
 import '../constants/colors.dart';
 import '../constants/size.dart';
@@ -22,18 +22,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         key: scaffoldKey,
         backgroundColor: CustomColor.scaffoldBg,
-        // appBar: AppBar(title: const Text('Home Page')),
+        // appBar: AppBar(title: const Text('Home Page')),  //Removed as just needed for debugging
         endDrawer: constraints.maxWidth >= kMinDesktopWidth
             ? null
             : const DrawerMobile(),
         body: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            //  MAIN
+            //  *** MAIN  ***
+            //  HEADER + NAVBAR
             if (constraints.maxWidth >= kMinDesktopWidth)
               const HeaderDesktop()
             else
@@ -43,6 +47,9 @@ class _HomePageState extends State<HomePage> {
                   scaffoldKey.currentState?.openEndDrawer();
                 },
               ),
+
+            //  MAIN DESKTOP/MOBILE
+            const MainDesktop(),
             //  SKILLS
             Container(
               height: 500.0,
