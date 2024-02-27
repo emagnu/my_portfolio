@@ -1,9 +1,10 @@
 //   ///
 //  Import LIBRARIES
-
 import 'package:flutter/material.dart';
+//  Import FILES
+import '../constants/colors.dart';
 
-import 'package:my_portfolio/constants/colors.dart';
+//  //   ///
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
