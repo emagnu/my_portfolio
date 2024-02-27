@@ -1,18 +1,17 @@
 //   ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/widgets/project_card_widget.dart';
 //  Import FILES
 import '../constants/colors.dart';
 import '../constants/size.dart';
-import '../utils/project_utils.dart';
 import '../widgets/drawer_mobile.dart';
-// import '../widgets/header_desktop.dart';
-// import '../widgets/header_mobile.dart';
-// import '../widgets/home_page.dart';
-// import '../widgets/main_desktop.dart';
-// import '../widgets/skill_desktop.dart';
-// import '../widgets/skills_mobile.dart';
+import '../widgets/projects_section.dart';
+import '../widgets/header_desktop.dart';
+import '../widgets/header_mobile.dart';
+import '../widgets/home_page.dart';
+import '../widgets/main_desktop.dart';
+import '../widgets/skill_desktop.dart';
+import '../widgets/skills_mobile.dart';
 //  //   ///
 
 class HomePage extends StatefulWidget {
@@ -42,74 +41,54 @@ class _HomePageState extends State<HomePage> {
         body: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            // //  *** MAIN  ***
-            // //  HEADER + NAVBAR DESKTOP/MOBILE
-            // if (constraints.maxWidth >= kMinDesktopWidth)
-            //   const HeaderDesktop()
-            // else
-            //   HeaderMobile(
-            //     onLogoTap: () {},
-            //     onMenuTap: () {
-            //       scaffoldKey.currentState?.openEndDrawer();
-            //     },
-            //   ),
+            //  *** MAIN  ***
+            //  HEADER + NAVBAR DESKTOP/MOBILE
+            if (constraints.maxWidth >= kMinDesktopWidth)
+              const HeaderDesktop()
+            else
+              HeaderMobile(
+                onLogoTap: () {},
+                onMenuTap: () {
+                  scaffoldKey.currentState?.openEndDrawer();
+                },
+              ),
 
-            // //  MAIN DESKTOP/MOBILE
-            // if (constraints.maxWidth >= kMinDesktopWidth)
-            //   const MainDesktop()
-            // else
-            //   const MainMobile(),
-            // //  *** SKILLS   ***
-            // Container(
-            //   height: 700.0,
-            //   width: screenWidth, //.infinity,
-            //   padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-            //   color: CustomColor.bgLight1, // Colors.blueGrey,
-            //   //
-            //   child: Column(
-            //     mainAxisSize: MainAxisSize.min,
-            //     children: <Widget>[
-            //       // title
-            //       const Text(
-            //         'What we can do for your business:',
-            //         style: TextStyle(
-            //           fontSize: 24.0,
-            //           fontWeight: FontWeight.bold,
-            //           color: CustomColor.whitePrimary,
-            //         ),
-            //       ),
-            //       const SizedBox(height: 50.0),
-            //       // Platforms & skills
-            //       if (constraints.maxWidth >= kMedDesktopWidth)
-            //         const SkillDesktop()
-            //       else
-            //         const SkillsMobile()
-            //     ],
-            //   ),
-            // ),
+            //  MAIN DESKTOP/MOBILE
+            if (constraints.maxWidth >= kMinDesktopWidth)
+              const MainDesktop()
+            else
+              const MainMobile(),
+            //  *** SKILLS   ***
+            Container(
+              height: 700.0,
+              width: screenWidth, //.infinity,
+              padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+              color: CustomColor.bgLight1, // Colors.blueGrey,
+              //
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  // title
+                  const Text(
+                    'What we can do for your business:',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      color: CustomColor.whitePrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 50.0),
+                  // Platforms & skills
+                  if (constraints.maxWidth >= kMedDesktopWidth)
+                    const SkillDesktop()
+                  else
+                    const SkillsMobile()
+                ],
+              ),
+            ),
 
             // ***  PROJECTS  ***
-            Container(
-                // height: 500.0,  // This container will have the eight of its content
-                width: screenWidth, //double.maxFinite, //double.infinity,
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-                child: Column(
-                  children: <Widget>[
-                    //  Work project Title
-                    const Text(
-                      'Work Projects:',
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: CustomColor.whitePrimary,
-                      ),
-                    ),
-                    //  Work project Card()
-                    ProjectCardWidget(
-                      project: personalProjectUtils.first,
-                    ),
-                  ],
-                )),
+            const ProjectsSection(),
 
             //  CONTACT
             Container(
